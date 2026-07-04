@@ -44,7 +44,9 @@ def register_user(user_in: UserCreate, db: Session = Depends(get_db)):
         raise
     except Exception as exc:
         db.rollback()
-        raise ApiError('Unable to register user', status_code=500, detail={'reason': str(exc)}) from exc
+        import traceback
+        traceback.print_exc()
+        raise
 
 
 

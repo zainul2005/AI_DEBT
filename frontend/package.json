@@ -2,11 +2,14 @@
   "name": "finrelief-ai-frontend",
   "private": true,
   "version": "1.0.0",
+  "homepage": "https://zainul2005.github.io/AI_DEBT/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^1.7.0",
@@ -16,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
+    "gh-pages": "^6.3.0",
     "vite": "^5.4.10"
   }
 }
