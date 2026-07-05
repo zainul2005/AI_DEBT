@@ -14,8 +14,9 @@ const TOKEN_STORAGE_KEY = 'finrelief-token';
 const TOKEN_EXPIRY_KEY = 'finrelief-token-expiry';
 const USER_STORAGE_KEY = 'finrelief-user';
 
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
+  baseURL: "https://ai-debt.onrender.com",
   timeout: 8000,
   headers: { 'X-Requested-With': 'XMLHttpRequest' }
 });
