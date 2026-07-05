@@ -107,3 +107,22 @@ finrelief-ai/
    npm run dev
    ```
    The frontend will run at `http://localhost:5173`.
+
+
+   # Author
+
+**Syed Zainul Abdin--Team Lead**<br>
+**Shaik Aslam -- Member**<br>
+**Otikunta Kavya Sri -- Member**<br> 
+**Rangappagari Dhanush -- Member**<br> 
+**Shaik Adnan -- Member**
+
+B.Tech – Artificial Intelligence & Data Science
+
+Annamacharya Institute of Technology & Sciences, Kadapa
+
+---
+
+# License
+
+This project is developed for academic purposes as part of the AI-Powered Debt Relief & Financial Recovery Platform.
