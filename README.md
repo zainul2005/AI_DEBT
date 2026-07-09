@@ -184,7 +184,7 @@ npm run dev
 Frontend URL
 
 ```
-http://localhost:5173
+https://zainul2005.github.io/AI_DEBT/
 ```
 
 ---
@@ -220,13 +220,13 @@ python -m uvicorn app.main:app --reload
 Backend URL
 
 ```
-http://127.0.0.1:8000
+https://ai-debt.onrender.com
 ```
 
 Swagger Documentation
 
 ```
-http://127.0.0.1:8000/docs
+https://ai-debt.onrender.com/docs
 ```
 
 ---
