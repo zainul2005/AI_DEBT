@@ -16,7 +16,7 @@ export default function DashboardPage() {
   const [snapshot, setSnapshot] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/insights/snapshot').then((response) => setSnapshot(response.data));
+    axios.get('https://ai-debt.onrender.com/insights/snapshot').then((response) => setSnapshot(response.data));
   }, []);
 
   return (
