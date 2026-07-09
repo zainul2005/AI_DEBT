@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const API_URL = "https://ai-debt.onrender.com";
+
 export default function HistoryPage() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState('');
@@ -10,9 +12,15 @@ export default function HistoryPage() {
   const [totalPages, setTotalPages] = useState(1);
 
   const loadHistory = async () => {
-    const response = await axios.get('http://localhost:8000/api/history', {
-      params: { page, page_size: pageSize, search, record_type: recordType },
+    const response = await axios.get(`${API_URL}/api/history`, {
+      params: {
+        page,
+        page_size: pageSize,
+        search,
+        record_type: recordType,
+      },
     });
+
     setItems(response.data.items);
     setTotalPages(response.data.pages);
   };
@@ -22,7 +30,7 @@ export default function HistoryPage() {
   }, [page, pageSize, search, recordType]);
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:8000/api/history/${id}`);
+    await axios.delete(`${API_URL}/api/history/${id}`);
     loadHistory();
   };
 
@@ -34,16 +42,26 @@ export default function HistoryPage() {
           <h2>Track settlements, emails, and reports in one secure place.</h2>
         </div>
       </div>
+
       <div className="panel-card wide-card animated-card">
         <div className="search-row">
-          <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search history" />
-          <select value={recordType} onChange={(event) => setRecordType(event.target.value)}>
+          <input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Search history"
+          />
+
+          <select
+            value={recordType}
+            onChange={(event) => setRecordType(event.target.value)}
+          >
             <option value="">All records</option>
             <option value="settlement">Settlement</option>
             <option value="email">Email</option>
             <option value="report">Report</option>
           </select>
         </div>
+
         <table className="data-table" style={{ marginTop: '1rem' }}>
           <thead>
             <tr>
@@ -55,6 +73,7 @@ export default function HistoryPage() {
               <th>Action</th>
             </tr>
           </thead>
+
           <tbody>
             {items.map((item) => (
               <tr key={item.id}>
@@ -63,15 +82,39 @@ export default function HistoryPage() {
                 <td>{item.title}</td>
                 <td>{item.description}</td>
                 <td>{item.status}</td>
-                <td><button className="btn secondary danger" onClick={() => handleDelete(item.id)}>Delete</button></td>
+                <td>
+                  <button
+                    className="btn secondary danger"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+
         <div className="pagination-row">
-          <button className="btn secondary" disabled={page === 1} onClick={() => setPage((current) => current - 1)}>Previous</button>
-          <span>Page {page} of {totalPages}</span>
-          <button className="btn secondary" disabled={page === totalPages} onClick={() => setPage((current) => current + 1)}>Next</button>
+          <button
+            className="btn secondary"
+            disabled={page === 1}
+            onClick={() => setPage((current) => current - 1)}
+          >
+            Previous
+          </button>
+
+          <span>
+            Page {page} of {totalPages}
+          </span>
+
+          <button
+            className="btn secondary"
+            disabled={page === totalPages}
+            onClick={() => setPage((current) => current + 1)}
+          >
+            Next
+          </button>
         </div>
       </div>
     </section>
